@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        color: #333333;
+      }
+      h2 {
+        color: #2c3e50;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 15px;
+      }
+      th,
+      td {
+        border: 1px solid #dddddd;
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #f4f6f7;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .footer {
+        font-size: 12px;
+        color: #888888;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🧑‍💻 <strong>Sync Report </strong>Daily Hire/Term Report</h2>
+    <p>
+      This is your automated report outlining new hires and terminations related
+      to employee discount management in ECRS.
+    </p>
+
+    <p>
+      <strong>Important:</strong> This automation only handles adding and
+      removing employee discounts.
+    </p>
+
+    <h3><strong>New Hires</strong></h3>
+
+    {% if hires %}
+    <h4>Pending new hires</h4>
+    <ul>
+      <li>HABA employees still require ECRS buyer accounts to be created.</li>
+      <li>
+        Cashier employees still require ECRS cashier accounts to be created.
+      </li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Full Name</th>
+          <th>Phone Number</th>
+          <th>Job Title</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for emp in hires %}
+        <tr style="background-color: #f08080">
+          <td>{{ emp["Employee ID"]}}</td>
+          <td>{{ emp["First Name"]}} {{ emp["Last Name"]}}</td>
+          <td>{{ emp["Phone Number"]}}</td>
+          <td>{{ emp["Job Title"]}}</td>
+          <td>{{ emp["Location"]}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <h4>No pending new hires for today.</h4>
+    {% endif %} {% if dont_check_hires %}
+    <h4>Completed new hires</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Full Name</th>
+          <th>Phone Number</th>
+          <th>Job Title</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for emp in dont_check_hires %}
+        <tr style="background-color: #90ee90">
+          <td>{{ emp["Employee ID"]}}</td>
+          <td>{{ emp["First Name"]}} {{ emp["Last Name"]}}</td>
+          <td>{{ emp["Phone Number"]}}</td>
+          <td>{{ emp["Job Title"]}}</td>
+          <td>{{ emp["Location"]}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <h4>No completed new hires for today.</h4>
+    {% endif %}
+
+    <h3><strong>Terms</strong></h3>
+    {% if terms %}
+    <h4>Pending terminations</h4>
+
+    <ul>
+      <li>Google Workspace users still need to be removed.</li>
+      <li>MLK employees still need their Armatura access revoked.</li>
+    </ul>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Full Name</th>
+          <th>Phone Number</th>
+          <th>Job Title</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for emp in terms %}
+        <tr style="background-color: #f08080">
+          <td>{{ emp["Employee ID"]}}</td>
+          <td>{{ emp["First Name"]}} {{ emp["Last Name"]}}</td>
+          <td>{{ emp["Phone Number"]}}</td>
+          <td>{{ emp["Job Title"]}}</td>
+          <td>{{ emp["Location"]}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <h4>No pending terminations for today.</h4>
+    {% endif %}
+
+    <p class="footer">Generated automatically by the Erewhon IT Dept</p>
+  </body>
+</html>

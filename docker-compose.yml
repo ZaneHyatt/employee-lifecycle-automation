@@ -1,0 +1,8 @@
+services:
+  employee-lifecycle-automation:
+    build: .
+    container_name: employee-lifecycle-automation
+    env_file:
+      - .env
+
+    restart: "no"
