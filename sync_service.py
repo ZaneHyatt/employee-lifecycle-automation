@@ -121,7 +121,7 @@ def terms(e_client, settings):
     ## loops through each report
     for report in airtable_report:
 
-        print(f"\n{report["First Name"]} {report["Last Name"]}: ")
+        print(f"\n{report['First Name']} {report['Last Name']}: ")
 
         try:
 
